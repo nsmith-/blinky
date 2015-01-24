@@ -15,7 +15,7 @@ AVRDUDE_PROGRAMMERID=avr109
 CC=avr-gcc
 CFLAGS=-I. -O2 -Wall -mmcu=$(MCU)
 ASMFLAGS=-I. -x assembler-with-cpp -mmcu=$(MCU)
-LFLAGS=-lm
+LFLAGS=-lm -mmcu=$(MCU)
 
 # Rules
 
@@ -24,6 +24,7 @@ LFLAGS=-lm
 
 all: blinky.out
 	avr-objdump -h $^
+	avr-size --mcu=$(MCU) --format=avr $^
 
 blinky.out: main.o pushled.o
 	$(CC) $(LFLAGS) -o $@ $^
