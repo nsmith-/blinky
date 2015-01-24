@@ -44,5 +44,5 @@ install: blinky.hex
 	avr-objcopy -j .text -j .data -O ihex $< $@
 
 clean: 
-	rm -f *.o *.out
+	rm -f *.o *.out *.hex
 
