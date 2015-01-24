@@ -14,7 +14,7 @@ AVRDUDE_PROGRAMMERID=avr109
 # Less often changed stuff
 CC=avr-gcc
 CFLAGS=-I. -O2 -Wall -mmcu=$(MCU)
-ASMFLAGS=-I. -x assembler-with-cpp -mmcu=$(MCU)
+ASMFLAGS=-I. -mmcu=$(MCU)
 LFLAGS=-lm -mmcu=$(MCU)
 
 # Rules

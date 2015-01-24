@@ -1,9 +1,12 @@
 #include <avr/io.h>
+#define PUSHLED_ASM
 #include "blinky.h"
 
-.extern grbaddr  
+.extern grb_buffer  
 
+.section .text
 .global pushled 
+.type pushled, @function
 pushled:
   ldi r18, _BV(COM0B1)|_BV(WGM01)|_BV(WGM00)
   out _SFR_IO_ADDR(TCCR0A), r18
@@ -16,8 +19,8 @@ pushled:
   ; Reset >50us
 
   ; Load grb address into Z (r30:r31)
-  lds    r31, grbaddr+1
-  lds    r30, grbaddr 
+  lds    r31, grb_buffer+1
+  lds    r30, grb_buffer 
 
   ; byte sent counter
   ldi    r21, lo8(GRBSIZE+1)
