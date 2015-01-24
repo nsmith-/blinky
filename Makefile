@@ -117,7 +117,10 @@ AVRDUDE_PROGRAMMERID=avr109
 # port--serial or parallel port to which your 
 # hardware programmer is attached
 #
-AVRDUDE_PORT=/dev/ttyACM0
+# linux
+#AVRDUDE_PORT=/dev/ttyACM0
+# mac
+AVRDUDE_PORT=/dev/cu.usbmodem1411
 
 
 ####################################################

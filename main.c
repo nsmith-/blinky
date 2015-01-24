@@ -5,7 +5,7 @@
 #include "blinky.h"
 #define DELAY 5
 
-volatile char grb[GRBSIZE] = { 0x00, 0x00, 0x00 };
+volatile char grb[GRBSIZE] = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 const char * grbaddr = grb;
 extern void pushled(void);
 
@@ -25,21 +25,25 @@ int main(void)
     while(1) {
 			for (i=0; i<=255; i++) {
 				grb[1] = i;
+				grb[4] = i;
 				_delay_ms(DELAY);
 				pushled();
 			}
 			for (i=0; i<=255; i++) {
 				grb[0] = i; grb[1] = 0xff-i;
+				grb[3] = i; grb[4] = 0xff-i;
 				_delay_ms(DELAY);
 				pushled();
 			}
 			for (i=0; i<=255; i++) {
 				grb[2] = i; grb[0] = 0xff-i;
+				grb[5] = i; grb[3] = 0xff-i;
 				_delay_ms(DELAY);
 				pushled();
 			}
 			for (i=0; i<=255; i++) {
 				grb[2] = 0xff-i;
+				grb[5] = 0xff-i;
 				_delay_ms(DELAY);
 				pushled();
 			}
