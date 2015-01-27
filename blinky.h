@@ -4,7 +4,8 @@
 #define GRBSIZE 6
 
 #ifndef PUSHLED_ASM
-volatile char grb_buffer[GRBSIZE] = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+char grb_buffer[GRBSIZE];
+const char * grbaddr = grb_buffer;
 #endif
 
 #endif //BLINKY_H

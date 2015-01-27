@@ -2,7 +2,7 @@
 #define PUSHLED_ASM
 #include "blinky.h"
 
-.extern grb_buffer  
+.extern grbaddr  
 
 .section .text
 .global pushled 
@@ -19,8 +19,8 @@ pushled:
   ; Reset >50us
 
   ; Load grb address into Z (r30:r31)
-  lds    r31, grb_buffer+1
-  lds    r30, grb_buffer 
+  lds    r31, grbaddr+1
+  lds    r30, grbaddr 
 
   ; byte sent counter
   ldi    r21, lo8(GRBSIZE+1)
