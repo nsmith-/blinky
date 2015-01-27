@@ -12,14 +12,25 @@ int main(void)
   // Set up registers
   DDRB |= _BV(PB0)|_BV(PB6); // Enable PB0 (rx led), pin 10
   DDRD |= _BV(PD0)|_BV(PD5);
-  //sei();
 
-  //PORTB |= _BV(PB6);
-  //pushled(); // takes 33us
-  //PORTB &= ~_BV(PB6);
+  grb_buffer[0] = 0x00;
+  grb_buffer[1] = 0x00;
+  grb_buffer[2] = 0x00;
+  grb_buffer[3] = 0x00;
+  grb_buffer[4] = 0x00;
+  grb_buffer[5] = 0x00;
 
-  // uint8_t failed miserably?!
-  int i;
+  int i = 0;
+  while(1)
+  {
+    i = i*19+51;
+    grb_buffer[1] = i;
+    i = i*19+51;
+    grb_buffer[4] = i;
+    _delay_ms(100);
+    pushled();
+  }
+
   while(1) {
     for (i=0; i<=255; i++) {
       grb_buffer[1] = i;
